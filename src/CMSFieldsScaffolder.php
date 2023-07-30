@@ -125,7 +125,7 @@ class CMSFieldsScaffolder extends Extension
                 $tabs = $rootTab->Tabs();
                 /** @var Tab $tab */
                 foreach ($tabs as $tab) {
-                    if ($tab->Fields()->count() < 1) {
+                    if (!is_a($tab, TabSet::class) && $tab->Fields()->count() < 1) {
                         $tabs->removeByName($tab->getName());
                     }
                 }
